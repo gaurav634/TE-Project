@@ -1,0 +1,41 @@
+    % --- Executes on button press in pushbuttonl.
+function pushbuttons…Callback (hObject, eventdata, handles)
+
+
+global GRAY
+  [file, path] = ligetfile({ *.*'}) ;
+  img_loc - fullfile (path, file);
+  RGB = imread (img_loc);
+  axes (handles.axes2) ;
+  Imshow (RGB):
+  GRAY = rgb2gray (RGB) ;
+  
+  
+    % --- Executes on button press in pushbutton2.
+function pushbutton2…Callback(object, eventdata, handles)
+
+
+k=get (handles.popupmenu, 'value');
+
+switch k
+
+  case 2
+     EDGE = edge (GRAY, 'Sobel’) ;
+  case 3
+    EDGE = edge (GRAY, 'Prewitte’) ;
+  case 4
+    EDGE = edge (GRAY, ‘Roberts’) ;
+ case 5
+    EDGE = edge (GRAY, ‘LOG');
+ case 6
+   EDGE = edge (GRAY, 'Canny');
+ otherwise
+   disp (‘No filter’) ;
+ end
+ 
+ axes (handles .axes2);
+    if isequal (K, 1)
+ imshow (GRAY) ;
+ else
+       imshow (EDGE) ;
+end
